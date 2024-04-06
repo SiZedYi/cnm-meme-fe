@@ -36,6 +36,8 @@ const SendOtp = () => {
     setTimeout(() => {
       navigate(route.register);
     }, 100);
+    //success => navigate to /chat
+
   };
 
   return (

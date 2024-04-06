@@ -1,6 +1,6 @@
 import axios from 'axios';
 import queryString from 'query-string';
-
+import Cookies from 'js-cookie';
 
 const axiosClient = axios.create({
 	baseURL:
@@ -12,7 +12,14 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use(async (config) => {
-	// handle token here ...
+	const authToken = Cookies.get('authToken');
+	if (authToken) {
+		config.headers.Authorization = `${authToken}`;
+	}
+
+	if (config.method === 'get') {
+		console.log('GET request full URL:', config.baseURL + config.url);
+	}
 	return config;
 });
 

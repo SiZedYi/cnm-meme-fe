@@ -17,7 +17,7 @@ import ResetPassword from './pages/ResetPassword';
 import Register from './pages/Register';
 import Chat from './pages/Chat';
 import RegisterOtpConfirm from './pages/RegisterOtpConfirm';
-
+import CallList from './components/CallList';
 const PrivateRoute = ({ children, requiredRole }) => {
 	const { role } = useContext(AuthToken);
 	if (
@@ -30,6 +30,14 @@ const PrivateRoute = ({ children, requiredRole }) => {
 	}
 };
 const router = createBrowserRouter([
+  {
+    path: route.callList,
+    element: (
+      <Layout>
+        <CallList />
+      </Layout>
+    ),
+  },
   {
     path: route.home,
     element: (

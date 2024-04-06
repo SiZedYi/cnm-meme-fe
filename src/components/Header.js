@@ -25,7 +25,7 @@ const Header = () => {
         <Container>
           <LogoStyled href={route.home}>
             <img src={images.logoMEME} alt="logo-meme" />
-            <p>Đòi tiền online</p>
+            <p>MEME CHAT</p>
           </LogoStyled>
 
           <Navbar.Toggle

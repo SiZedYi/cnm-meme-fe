@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button, FormGroup } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 import route from "../configs/route";
 import {AuthToken} from '../authToken/index'
 const FormStyled = styled(Form)`
@@ -28,6 +29,7 @@ const LoginForm =() => {
   const [password, setPassword] = useState("");
    const [showPassword, setShowPassword] = useState(false);
   const { login } = useContext(AuthToken);
+  const navigate = useNavigate();
   const strongPasswordPattern = new RegExp(
     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
   );
@@ -47,6 +49,7 @@ const LoginForm =() => {
     const response = await login({ email, password });
 
     console.log(response);
+    navigate(route.chat);
   };
   
     return (

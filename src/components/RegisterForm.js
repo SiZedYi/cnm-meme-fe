@@ -38,6 +38,7 @@ const RegisterForm = () => {
       dateOfBirth,
       
     });
+
     axiosClient.post(`/users/send-otp`, {
       username,
       password,
@@ -61,11 +62,13 @@ const RegisterForm = () => {
   return (
     <FormStyled onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="registerUsername">
-        <Form.Label>Họ và tên</Form.Label>
+        <Form.Label>Tên tài khoản</Form.Label>
         <Form.Control
           type="text"
           placeholder="Nguyễn Văn A"
           value={username}
+          //ràng buộc không được rỗng:
+          required
           onChange={(e) => setUserName(e.target.value)}
         />
       </Form.Group>
@@ -73,10 +76,13 @@ const RegisterForm = () => {
       <Form.Group className="mb-3" controlId="registerPassword">
         <Form.Label>Mật khẩu</Form.Label>
         <Form.Control
-          type="text"
+          type="password"
           placeholder="Mật khẩu"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          //ràng buộc mật khẩu mạnh:
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          required
         />
       </Form.Group>
 
@@ -86,6 +92,8 @@ const RegisterForm = () => {
           placeholder="nguyenvana@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
+
         />
       </Form.Group>
 
@@ -95,6 +103,9 @@ const RegisterForm = () => {
           placeholder="0901234567"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
+          required
+          pattern="0[0-9]{9}"
+
         />
       </Form.Group>
 
@@ -104,6 +115,8 @@ const RegisterForm = () => {
           placeholder="David Nguyen"
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
+          required
+
         />
       </Form.Group>
       <Form.Label className="mb-3">Giới tính</Form.Label>
