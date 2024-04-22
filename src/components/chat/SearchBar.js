@@ -124,6 +124,8 @@ const SearchBar = () => {
     } catch (error) {
       alert(error.response.data.error);
       setCheckedUserId([])
+      console.error("Error creating group:", error);
+
       setShowGroup(false); // Assuming setState function for showing group modal/dialog
     }
   };
